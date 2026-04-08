@@ -1,0 +1,17 @@
+snscrape
+pandas
+numpy
+scipy
+scikit-learn
+networkx
+matplotlib
+plotly
+xgboost
+python-dotenv
+requests
+fastapi
+uvicorn
+streamlit
+reportlab
+pytest
+httpx

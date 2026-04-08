@@ -1,0 +1,60 @@
+2026-04-08 20:47:07,008 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 20:47:07,010 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 20:47:07,014 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 20:47:07,026 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 20:52:00,825 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 20:52:00,828 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 20:52:00,831 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 20:52:00,843 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 20:56:49,529 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 20:56:49,533 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 20:56:49,539 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 20:56:49,550 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 21:02:35,293 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 21:02:35,299 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 21:02:35,303 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 21:02:35,316 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 21:25:36,625 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 21:25:36,628 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 21:25:36,634 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 21:25:36,648 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 21:33:30,854 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 21:33:30,857 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 21:33:30,861 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 21:33:30,876 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 21:41:37,625 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 21:41:37,628 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 21:41:37,634 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 21:41:37,651 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 21:57:33,612 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 21:57:33,616 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 21:57:33,629 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 21:57:33,653 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 22:12:20,215 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 22:12:20,219 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 22:12:20,229 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 22:12:20,258 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 22:33:42,154 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 22:33:42,157 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 22:33:42,161 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 22:33:42,172 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 22:42:34,730 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 22:42:34,733 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 22:42:34,737 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 22:42:34,751 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 22:44:32,005 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 22:44:32,009 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 22:44:32,014 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 22:44:32,030 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 22:58:21,399 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 22:58:21,404 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 22:58:21,409 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 22:58:21,423 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 23:07:16,996 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 23:07:17,000 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 23:07:17,006 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 23:07:17,020 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-08 23:12:32,463 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-08 23:12:32,466 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-08 23:12:32,470 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-08 23:12:32,481 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
