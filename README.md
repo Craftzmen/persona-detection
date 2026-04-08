@@ -164,4 +164,4 @@ This project is licensed under the MIT License. See `LICENSE` for more details.
 
 ---
 
-*Built with ❤️ by the SYNAPSE Intelligence Team.*
+*Built with ❤️ by the Craftzmen
