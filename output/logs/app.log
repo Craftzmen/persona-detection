@@ -58,3 +58,87 @@
 2026-04-08 23:12:32,466 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
 2026-04-08 23:12:32,470 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
 2026-04-08 23:12:32,481 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-09 09:19:38,409 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 09:19:38,416 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 09:19:38,426 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 09:19:38,441 | WARNING | app.attribution_clustering | No AI personas found in predictions; returning empty AI subset.
+2026-04-09 20:44:07,395 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 672 rows for dataset 'twibot_22'
+2026-04-09 20:44:07,448 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 17372 rows for dataset 'twibot_20'
+2026-04-09 20:44:07,452 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 360 rows for dataset 'cresci'
+2026-04-09 20:44:07,455 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 288 rows for dataset 'pan_2019'
+2026-04-09 20:44:08,048 | INFO | app.data_acquisition.dataset_builder | Saved dataset with 18672 rows to /Users/apple/Projects/fyps/persona-detection/data/processed/dataset.csv
+2026-04-09 20:44:08,048 | INFO | app.data_acquisition.dataset_builder | Saved merged prebuilt dataset with 18672 rows to /Users/apple/Projects/fyps/persona-detection/data/processed/prebuilt_merged_dataset.csv
+2026-04-09 20:44:08,049 | INFO | app.data_acquisition.dataset_builder | Saved preprocessed dataset with 16631 rows to /Users/apple/Projects/fyps/persona-detection/data/processed/dataset_preprocessed.csv
+2026-04-09 20:44:08,133 | WARNING | app.feature_extraction | Dropping 1300 rows with invalid timestamps.
+2026-04-09 20:44:08,484 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 20:44:08,556 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 20:44:08,990 | INFO | app.feature_extraction | Saved debug feature outputs to /Users/apple/Projects/fyps/persona-detection/data/processed
+2026-04-09 20:45:20,883 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 20:45:20,955 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 20:45:21,368 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 20:48:56,782 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 20:48:56,855 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 20:48:57,396 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 20:50:37,285 | INFO | app.integration_service | No local posts found for 'nasa' while DATA_SOURCE_MODE=dataset; returning empty set.
+2026-04-09 20:50:37,908 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 20:50:37,980 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 20:50:38,331 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 21:04:03,793 | INFO | app.integration_service | No local posts found for 'nasa' while DATA_SOURCE_MODE=dataset; returning empty set.
+2026-04-09 21:04:04,427 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:04:04,499 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:04:04,863 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 21:04:22,721 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:04:22,796 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:04:35,871 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:04:35,939 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:23:26,090 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:23:26,158 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:24:12,742 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:24:12,814 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:24:13,211 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 21:24:13,813 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:24:13,890 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:41:21,498 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 672 rows for dataset 'twibot_22'
+2026-04-09 21:41:21,555 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 17372 rows for dataset 'twibot_20'
+2026-04-09 21:41:21,559 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 360 rows for dataset 'cresci'
+2026-04-09 21:41:21,564 | INFO | app.data_acquisition.prebuilt_datasets | Loaded 288 rows for dataset 'pan_2019'
+2026-04-09 21:41:22,079 | INFO | app.data_acquisition.dataset_builder | Saved dataset with 18668 rows to /Users/apple/Projects/fyps/persona-detection/data/processed/dataset.csv
+2026-04-09 21:41:22,079 | INFO | app.data_acquisition.dataset_builder | Saved merged prebuilt dataset with 18668 rows to /Users/apple/Projects/fyps/persona-detection/data/processed/prebuilt_merged_dataset.csv
+2026-04-09 21:41:22,080 | INFO | app.data_acquisition.dataset_builder | Saved preprocessed dataset with 16577 rows to /Users/apple/Projects/fyps/persona-detection/data/processed/dataset_preprocessed.csv
+2026-04-09 21:41:22,150 | WARNING | app.feature_extraction | Dropping 1300 rows with invalid timestamps.
+2026-04-09 21:41:22,491 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:41:22,561 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:41:22,969 | INFO | app.feature_extraction | Saved debug feature outputs to /Users/apple/Projects/fyps/persona-detection/data/processed
+2026-04-09 21:41:47,519 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:41:47,635 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:41:48,030 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 21:44:40,289 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:44:40,361 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:44:40,757 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 21:44:41,359 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:44:41,432 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:47:13,315 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:47:13,382 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:49:21,875 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:49:21,944 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:52:29,439 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:52:29,511 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:52:29,920 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 21:52:30,515 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:52:30,584 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 21:52:31,586 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 21:52:31,656 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 22:00:00,476 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 22:00:00,551 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 22:00:00,998 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 22:00:01,626 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 22:00:01,698 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 23:41:42,507 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 23:41:42,577 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 23:41:42,924 | WARNING | app.integration_service | Model bundle not found at /Users/apple/Projects/fyps/persona-detection/data/processed/best_persona_model.pkl. Falling back to heuristic scoring.
+2026-04-09 23:41:43,574 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 23:41:43,651 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 23:42:07,003 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 23:42:07,074 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.
+2026-04-09 23:42:20,198 | INFO | app.feature_extraction | Interaction metrics not found; defaulting interaction features to zero.
+2026-04-09 23:42:20,267 | WARNING | app.feature_extraction | No interaction columns available; network features default to zeros.

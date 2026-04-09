@@ -1,0 +1,481 @@
+username,tweet_text,timestamp,label
+tw20_user_000,Had coffee and reviewed project notes for today,2024-01-01T00:00:00+00:00,human
+tw20_user_000,Trying a new approach to clean noisy text data,2024-01-01T04:00:00+00:00,human
+tw20_user_000,Had coffee and reviewed project notes for today,2024-01-01T02:00:00+00:00,human
+tw20_user_000,Had coffee and reviewed project notes for today,2024-01-01T09:00:00+00:00,human
+tw20_user_000,Trying a new approach to clean noisy text data,2024-01-01T08:00:00+00:00,human
+tw20_user_000,Meeting recap: aligning timeline and deliverables with team,2024-01-01T20:00:00+00:00,human
+tw20_user_000,Had coffee and reviewed project notes for today,2024-01-02T00:00:00+00:00,human
+tw20_user_000,Posting a quick update before I log off,2024-01-01T14:00:00+00:00,human
+tw20_user_000,Had coffee and reviewed project notes for today,2024-01-02T00:00:00+00:00,human
+tw20_user_000,Had coffee and reviewed project notes for today,2024-01-02T12:00:00+00:00,human
+tw20_user_000,Trying a new approach to clean noisy text data,2024-01-02T16:00:00+00:00,human
+tw20_user_000,Posting a quick update before I log off,2024-01-01T22:00:00+00:00,human
+tw20_user_001,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-01T03:00:00+00:00,deceptive_human
+tw20_user_001,Had coffee and reviewed project notes for today,2024-01-01T05:00:00+00:00,deceptive_human
+tw20_user_001,Had coffee and reviewed project notes for today,2024-01-01T09:00:00+00:00,deceptive_human
+tw20_user_001,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-01T12:00:00+00:00,deceptive_human
+tw20_user_001,Had coffee and reviewed project notes for today,2024-01-01T11:00:00+00:00,deceptive_human
+tw20_user_001,Posting a quick update before I log off,2024-01-01T18:00:00+00:00,deceptive_human
+tw20_user_001,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-01T15:00:00+00:00,deceptive_human
+tw20_user_001,Had coffee and reviewed project notes for today,2024-01-02T07:00:00+00:00,deceptive_human
+tw20_user_001,Had coffee and reviewed project notes for today,2024-01-01T11:00:00+00:00,deceptive_human
+tw20_user_001,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-02T06:00:00+00:00,deceptive_human
+tw20_user_001,Posting a quick update before I log off,2024-01-01T23:00:00+00:00,deceptive_human
+tw20_user_001,Trying a new approach to clean noisy text data,2024-01-01T14:00:00+00:00,deceptive_human
+tw20_user_002,"repeating pattern detected, adjusting generation weights",2024-01-01T06:00:00+00:00,ai
+tw20_user_002,system update: optimize pipeline throughput and consistency,2024-01-01T07:00:00+00:00,ai
+tw20_user_002,batch publish executed successfully across channels,2024-01-01T10:00:00+00:00,ai
+tw20_user_002,system update: optimize pipeline throughput and consistency,2024-01-01T18:00:00+00:00,ai
+tw20_user_002,batch publish executed successfully across channels,2024-01-01T10:00:00+00:00,ai
+tw20_user_002,automated content stream calibration in progress,2024-01-01T11:00:00+00:00,ai
+tw20_user_002,"repeating pattern detected, adjusting generation weights",2024-01-01T18:00:00+00:00,ai
+tw20_user_002,system update: optimize pipeline throughput and consistency,2024-01-02T10:00:00+00:00,ai
+tw20_user_002,automated content stream calibration in progress,2024-01-02T06:00:00+00:00,ai
+tw20_user_002,automated content stream calibration in progress,2024-01-02T18:00:00+00:00,ai
+tw20_user_002,"repeating pattern detected, adjusting generation weights",2024-01-01T16:00:00+00:00,ai
+tw20_user_002,system update: optimize pipeline throughput and consistency,2024-01-01T17:00:00+00:00,ai
+tw20_user_003,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-01T09:00:00+00:00,fake
+tw20_user_003,batch publish executed successfully across channels,2024-01-01T10:00:00+00:00,fake
+tw20_user_003,"repeating pattern detected, adjusting generation weights",2024-01-01T15:00:00+00:00,fake
+tw20_user_003,"repeating pattern detected, adjusting generation weights check this now http://example.com @someone !!!",2024-01-01T12:00:00+00:00,fake
+tw20_user_003,"repeating pattern detected, adjusting generation weights",2024-01-01T13:00:00+00:00,fake
+tw20_user_003,system update: optimize pipeline throughput and consistency,2024-01-01T19:00:00+00:00,fake
+tw20_user_003,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-02T03:00:00+00:00,fake
+tw20_user_003,"repeating pattern detected, adjusting generation weights",2024-01-01T16:00:00+00:00,fake
+tw20_user_003,automated content stream calibration in progress,2024-01-02T09:00:00+00:00,fake
+tw20_user_003,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-02T21:00:00+00:00,fake
+tw20_user_003,automated content stream calibration in progress,2024-01-02T05:00:00+00:00,fake
+tw20_user_003,batch publish executed successfully across channels,2024-01-01T20:00:00+00:00,fake
+tw20_user_004,Trying a new approach to clean noisy text data,2024-01-01T12:00:00+00:00,human
+tw20_user_004,Had coffee and reviewed project notes for today,2024-01-01T14:00:00+00:00,human
+tw20_user_004,Had coffee and reviewed project notes for today,2024-01-01T16:00:00+00:00,human
+tw20_user_004,Trying a new approach to clean noisy text data,2024-01-01T21:00:00+00:00,human
+tw20_user_004,Posting a quick update before I log off,2024-01-02T04:00:00+00:00,human
+tw20_user_004,Had coffee and reviewed project notes for today,2024-01-02T03:00:00+00:00,human
+tw20_user_004,Trying a new approach to clean noisy text data,2024-01-02T00:00:00+00:00,human
+tw20_user_004,Had coffee and reviewed project notes for today,2024-01-02T09:00:00+00:00,human
+tw20_user_004,Trying a new approach to clean noisy text data,2024-01-02T12:00:00+00:00,human
+tw20_user_004,Trying a new approach to clean noisy text data,2024-01-01T21:00:00+00:00,human
+tw20_user_004,Posting a quick update before I log off,2024-01-03T04:00:00+00:00,human
+tw20_user_004,Posting a quick update before I log off,2024-01-03T08:00:00+00:00,human
+tw20_user_005,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-01T15:00:00+00:00,deceptive_human
+tw20_user_005,Posting a quick update before I log off,2024-01-01T19:00:00+00:00,deceptive_human
+tw20_user_005,Trying a new approach to clean noisy text data,2024-01-01T21:00:00+00:00,deceptive_human
+tw20_user_005,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-01T18:00:00+00:00,deceptive_human
+tw20_user_005,Posting a quick update before I log off,2024-01-01T19:00:00+00:00,deceptive_human
+tw20_user_005,Trying a new approach to clean noisy text data,2024-01-02T01:00:00+00:00,deceptive_human
+tw20_user_005,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-02T09:00:00+00:00,deceptive_human
+tw20_user_005,Trying a new approach to clean noisy text data,2024-01-01T22:00:00+00:00,deceptive_human
+tw20_user_005,Trying a new approach to clean noisy text data,2024-01-02T15:00:00+00:00,deceptive_human
+tw20_user_005,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-03T03:00:00+00:00,deceptive_human
+tw20_user_005,Posting a quick update before I log off,2024-01-02T11:00:00+00:00,deceptive_human
+tw20_user_005,Posting a quick update before I log off,2024-01-03T00:00:00+00:00,deceptive_human
+tw20_user_006,"repeating pattern detected, adjusting generation weights",2024-01-01T18:00:00+00:00,ai
+tw20_user_006,"repeating pattern detected, adjusting generation weights",2024-01-01T22:00:00+00:00,ai
+tw20_user_006,system update: optimize pipeline throughput and consistency,2024-01-01T20:00:00+00:00,ai
+tw20_user_006,"repeating pattern detected, adjusting generation weights",2024-01-02T06:00:00+00:00,ai
+tw20_user_006,system update: optimize pipeline throughput and consistency,2024-01-02T02:00:00+00:00,ai
+tw20_user_006,batch publish executed successfully across channels,2024-01-02T04:00:00+00:00,ai
+tw20_user_006,automated content stream calibration in progress,2024-01-02T00:00:00+00:00,ai
+tw20_user_006,automated content stream calibration in progress,2024-01-02T01:00:00+00:00,ai
+tw20_user_006,"repeating pattern detected, adjusting generation weights",2024-01-02T18:00:00+00:00,ai
+tw20_user_006,system update: optimize pipeline throughput and consistency,2024-01-03T06:00:00+00:00,ai
+tw20_user_006,batch publish executed successfully across channels,2024-01-02T14:00:00+00:00,ai
+tw20_user_006,"repeating pattern detected, adjusting generation weights",2024-01-03T03:00:00+00:00,ai
+tw20_user_007,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-01T21:00:00+00:00,fake
+tw20_user_007,"repeating pattern detected, adjusting generation weights",2024-01-01T23:00:00+00:00,fake
+tw20_user_007,"repeating pattern detected, adjusting generation weights",2024-01-02T05:00:00+00:00,fake
+tw20_user_007,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-02T06:00:00+00:00,fake
+tw20_user_007,system update: optimize pipeline throughput and consistency,2024-01-02T01:00:00+00:00,fake
+tw20_user_007,batch publish executed successfully across channels,2024-01-02T07:00:00+00:00,fake
+tw20_user_007,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-02T21:00:00+00:00,fake
+tw20_user_007,"repeating pattern detected, adjusting generation weights",2024-01-02T18:00:00+00:00,fake
+tw20_user_007,automated content stream calibration in progress,2024-01-03T05:00:00+00:00,fake
+tw20_user_007,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-03T00:00:00+00:00,fake
+tw20_user_007,system update: optimize pipeline throughput and consistency,2024-01-02T17:00:00+00:00,fake
+tw20_user_007,system update: optimize pipeline throughput and consistency,2024-01-02T19:00:00+00:00,fake
+tw20_user_008,Meeting recap: aligning timeline and deliverables with team,2024-01-02T00:00:00+00:00,human
+tw20_user_008,Had coffee and reviewed project notes for today,2024-01-02T04:00:00+00:00,human
+tw20_user_008,Trying a new approach to clean noisy text data,2024-01-02T06:00:00+00:00,human
+tw20_user_008,Trying a new approach to clean noisy text data,2024-01-02T03:00:00+00:00,human
+tw20_user_008,Meeting recap: aligning timeline and deliverables with team,2024-01-02T12:00:00+00:00,human
+tw20_user_008,Trying a new approach to clean noisy text data,2024-01-02T10:00:00+00:00,human
+tw20_user_008,Had coffee and reviewed project notes for today,2024-01-02T12:00:00+00:00,human
+tw20_user_008,Meeting recap: aligning timeline and deliverables with team,2024-01-02T14:00:00+00:00,human
+tw20_user_008,Posting a quick update before I log off,2024-01-02T16:00:00+00:00,human
+tw20_user_008,Trying a new approach to clean noisy text data,2024-01-02T09:00:00+00:00,human
+tw20_user_008,Posting a quick update before I log off,2024-01-03T06:00:00+00:00,human
+tw20_user_008,Had coffee and reviewed project notes for today,2024-01-02T22:00:00+00:00,human
+tw20_user_009,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-02T03:00:00+00:00,deceptive_human
+tw20_user_009,Posting a quick update before I log off,2024-01-02T07:00:00+00:00,deceptive_human
+tw20_user_009,Posting a quick update before I log off,2024-01-02T11:00:00+00:00,deceptive_human
+tw20_user_009,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-02T06:00:00+00:00,deceptive_human
+tw20_user_009,Had coffee and reviewed project notes for today,2024-01-02T15:00:00+00:00,deceptive_human
+tw20_user_009,Posting a quick update before I log off,2024-01-02T23:00:00+00:00,deceptive_human
+tw20_user_009,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-02T21:00:00+00:00,deceptive_human
+tw20_user_009,Meeting recap: aligning timeline and deliverables with team,2024-01-02T17:00:00+00:00,deceptive_human
+tw20_user_009,Had coffee and reviewed project notes for today,2024-01-03T11:00:00+00:00,deceptive_human
+tw20_user_009,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-02T12:00:00+00:00,deceptive_human
+tw20_user_009,Meeting recap: aligning timeline and deliverables with team,2024-01-03T09:00:00+00:00,deceptive_human
+tw20_user_009,Trying a new approach to clean noisy text data,2024-01-03T01:00:00+00:00,deceptive_human
+tw20_user_010,"repeating pattern detected, adjusting generation weights",2024-01-02T06:00:00+00:00,ai
+tw20_user_010,system update: optimize pipeline throughput and consistency,2024-01-02T09:00:00+00:00,ai
+tw20_user_010,automated content stream calibration in progress,2024-01-02T12:00:00+00:00,ai
+tw20_user_010,automated content stream calibration in progress,2024-01-02T15:00:00+00:00,ai
+tw20_user_010,system update: optimize pipeline throughput and consistency,2024-01-02T18:00:00+00:00,ai
+tw20_user_010,automated content stream calibration in progress,2024-01-02T16:00:00+00:00,ai
+tw20_user_010,"repeating pattern detected, adjusting generation weights",2024-01-02T18:00:00+00:00,ai
+tw20_user_010,system update: optimize pipeline throughput and consistency,2024-01-02T13:00:00+00:00,ai
+tw20_user_010,system update: optimize pipeline throughput and consistency,2024-01-02T14:00:00+00:00,ai
+tw20_user_010,automated content stream calibration in progress,2024-01-03T09:00:00+00:00,ai
+tw20_user_010,system update: optimize pipeline throughput and consistency,2024-01-03T22:00:00+00:00,ai
+tw20_user_010,"repeating pattern detected, adjusting generation weights",2024-01-04T02:00:00+00:00,ai
+tw20_user_011,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-02T09:00:00+00:00,fake
+tw20_user_011,batch publish executed successfully across channels,2024-01-02T11:00:00+00:00,fake
+tw20_user_011,batch publish executed successfully across channels,2024-01-02T15:00:00+00:00,fake
+tw20_user_011,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-02T12:00:00+00:00,fake
+tw20_user_011,batch publish executed successfully across channels,2024-01-02T17:00:00+00:00,fake
+tw20_user_011,batch publish executed successfully across channels,2024-01-03T05:00:00+00:00,fake
+tw20_user_011,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-03T09:00:00+00:00,fake
+tw20_user_011,automated content stream calibration in progress,2024-01-03T06:00:00+00:00,fake
+tw20_user_011,"repeating pattern detected, adjusting generation weights",2024-01-03T09:00:00+00:00,fake
+tw20_user_011,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-03T12:00:00+00:00,fake
+tw20_user_011,"repeating pattern detected, adjusting generation weights",2024-01-03T05:00:00+00:00,fake
+tw20_user_011,"repeating pattern detected, adjusting generation weights",2024-01-02T20:00:00+00:00,fake
+tw20_user_012,Posting a quick update before I log off,2024-01-02T12:00:00+00:00,human
+tw20_user_012,Trying a new approach to clean noisy text data,2024-01-02T13:00:00+00:00,human
+tw20_user_012,Meeting recap: aligning timeline and deliverables with team,2024-01-02T20:00:00+00:00,human
+tw20_user_012,Had coffee and reviewed project notes for today,2024-01-02T18:00:00+00:00,human
+tw20_user_012,Trying a new approach to clean noisy text data,2024-01-02T16:00:00+00:00,human
+tw20_user_012,Posting a quick update before I log off,2024-01-03T08:00:00+00:00,human
+tw20_user_012,Meeting recap: aligning timeline and deliverables with team,2024-01-03T00:00:00+00:00,human
+tw20_user_012,Trying a new approach to clean noisy text data,2024-01-03T09:00:00+00:00,human
+tw20_user_012,Meeting recap: aligning timeline and deliverables with team,2024-01-03T04:00:00+00:00,human
+tw20_user_012,Posting a quick update before I log off,2024-01-04T00:00:00+00:00,human
+tw20_user_012,Trying a new approach to clean noisy text data,2024-01-04T04:00:00+00:00,human
+tw20_user_012,Had coffee and reviewed project notes for today,2024-01-04T08:00:00+00:00,human
+tw20_user_013,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-02T15:00:00+00:00,deceptive_human
+tw20_user_013,Meeting recap: aligning timeline and deliverables with team,2024-01-02T19:00:00+00:00,deceptive_human
+tw20_user_013,Trying a new approach to clean noisy text data,2024-01-02T19:00:00+00:00,deceptive_human
+tw20_user_013,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-02T18:00:00+00:00,deceptive_human
+tw20_user_013,Posting a quick update before I log off,2024-01-03T03:00:00+00:00,deceptive_human
+tw20_user_013,Trying a new approach to clean noisy text data,2024-01-03T11:00:00+00:00,deceptive_human
+tw20_user_013,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-02T21:00:00+00:00,deceptive_human
+tw20_user_013,Meeting recap: aligning timeline and deliverables with team,2024-01-03T19:00:00+00:00,deceptive_human
+tw20_user_013,Trying a new approach to clean noisy text data,2024-01-03T15:00:00+00:00,deceptive_human
+tw20_user_013,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-04T03:00:00+00:00,deceptive_human
+tw20_user_013,Posting a quick update before I log off,2024-01-03T01:00:00+00:00,deceptive_human
+tw20_user_013,Meeting recap: aligning timeline and deliverables with team,2024-01-03T02:00:00+00:00,deceptive_human
+tw20_user_014,"repeating pattern detected, adjusting generation weights",2024-01-02T18:00:00+00:00,ai
+tw20_user_014,batch publish executed successfully across channels,2024-01-02T19:00:00+00:00,ai
+tw20_user_014,"repeating pattern detected, adjusting generation weights",2024-01-03T02:00:00+00:00,ai
+tw20_user_014,automated content stream calibration in progress,2024-01-02T21:00:00+00:00,ai
+tw20_user_014,batch publish executed successfully across channels,2024-01-02T22:00:00+00:00,ai
+tw20_user_014,"repeating pattern detected, adjusting generation weights",2024-01-03T09:00:00+00:00,ai
+tw20_user_014,automated content stream calibration in progress,2024-01-03T12:00:00+00:00,ai
+tw20_user_014,batch publish executed successfully across channels,2024-01-03T08:00:00+00:00,ai
+tw20_user_014,system update: optimize pipeline throughput and consistency,2024-01-03T02:00:00+00:00,ai
+tw20_user_014,automated content stream calibration in progress,2024-01-03T03:00:00+00:00,ai
+tw20_user_014,batch publish executed successfully across channels,2024-01-04T00:00:00+00:00,ai
+tw20_user_014,automated content stream calibration in progress,2024-01-04T14:00:00+00:00,ai
+tw20_user_015,"repeating pattern detected, adjusting generation weights check this now http://example.com @someone !!!",2024-01-02T21:00:00+00:00,fake
+tw20_user_015,automated content stream calibration in progress,2024-01-03T00:00:00+00:00,fake
+tw20_user_015,"repeating pattern detected, adjusting generation weights",2024-01-03T05:00:00+00:00,fake
+tw20_user_015,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-03T06:00:00+00:00,fake
+tw20_user_015,batch publish executed successfully across channels,2024-01-03T09:00:00+00:00,fake
+tw20_user_015,"repeating pattern detected, adjusting generation weights",2024-01-03T02:00:00+00:00,fake
+tw20_user_015,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-03T15:00:00+00:00,fake
+tw20_user_015,"repeating pattern detected, adjusting generation weights",2024-01-04T01:00:00+00:00,fake
+tw20_user_015,batch publish executed successfully across channels,2024-01-03T05:00:00+00:00,fake
+tw20_user_015,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-04T00:00:00+00:00,fake
+tw20_user_015,batch publish executed successfully across channels,2024-01-03T07:00:00+00:00,fake
+tw20_user_015,batch publish executed successfully across channels,2024-01-03T19:00:00+00:00,fake
+tw20_user_016,Meeting recap: aligning timeline and deliverables with team,2024-01-03T00:00:00+00:00,human
+tw20_user_016,Had coffee and reviewed project notes for today,2024-01-03T01:00:00+00:00,human
+tw20_user_016,Had coffee and reviewed project notes for today,2024-01-03T04:00:00+00:00,human
+tw20_user_016,Trying a new approach to clean noisy text data,2024-01-03T12:00:00+00:00,human
+tw20_user_016,Meeting recap: aligning timeline and deliverables with team,2024-01-03T16:00:00+00:00,human
+tw20_user_016,Meeting recap: aligning timeline and deliverables with team,2024-01-03T20:00:00+00:00,human
+tw20_user_016,Posting a quick update before I log off,2024-01-04T00:00:00+00:00,human
+tw20_user_016,Meeting recap: aligning timeline and deliverables with team,2024-01-03T07:00:00+00:00,human
+tw20_user_016,Trying a new approach to clean noisy text data,2024-01-03T16:00:00+00:00,human
+tw20_user_016,Posting a quick update before I log off,2024-01-04T12:00:00+00:00,human
+tw20_user_016,Meeting recap: aligning timeline and deliverables with team,2024-01-04T06:00:00+00:00,human
+tw20_user_016,Trying a new approach to clean noisy text data,2024-01-04T20:00:00+00:00,human
+tw20_user_017,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-03T03:00:00+00:00,deceptive_human
+tw20_user_017,Meeting recap: aligning timeline and deliverables with team,2024-01-03T07:00:00+00:00,deceptive_human
+tw20_user_017,Trying a new approach to clean noisy text data,2024-01-03T07:00:00+00:00,deceptive_human
+tw20_user_017,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-03T12:00:00+00:00,deceptive_human
+tw20_user_017,Trying a new approach to clean noisy text data,2024-01-03T15:00:00+00:00,deceptive_human
+tw20_user_017,Posting a quick update before I log off,2024-01-03T13:00:00+00:00,deceptive_human
+tw20_user_017,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-03T21:00:00+00:00,deceptive_human
+tw20_user_017,Trying a new approach to clean noisy text data,2024-01-04T00:00:00+00:00,deceptive_human
+tw20_user_017,Had coffee and reviewed project notes for today,2024-01-04T03:00:00+00:00,deceptive_human
+tw20_user_017,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-04T15:00:00+00:00,deceptive_human
+tw20_user_017,Meeting recap: aligning timeline and deliverables with team,2024-01-04T09:00:00+00:00,deceptive_human
+tw20_user_017,Had coffee and reviewed project notes for today,2024-01-04T12:00:00+00:00,deceptive_human
+tw20_user_018,system update: optimize pipeline throughput and consistency,2024-01-03T06:00:00+00:00,ai
+tw20_user_018,batch publish executed successfully across channels,2024-01-03T09:00:00+00:00,ai
+tw20_user_018,batch publish executed successfully across channels,2024-01-03T12:00:00+00:00,ai
+tw20_user_018,automated content stream calibration in progress,2024-01-03T12:00:00+00:00,ai
+tw20_user_018,"repeating pattern detected, adjusting generation weights",2024-01-03T18:00:00+00:00,ai
+tw20_user_018,system update: optimize pipeline throughput and consistency,2024-01-03T16:00:00+00:00,ai
+tw20_user_018,automated content stream calibration in progress,2024-01-03T18:00:00+00:00,ai
+tw20_user_018,automated content stream calibration in progress,2024-01-03T13:00:00+00:00,ai
+tw20_user_018,system update: optimize pipeline throughput and consistency,2024-01-03T22:00:00+00:00,ai
+tw20_user_018,batch publish executed successfully across channels,2024-01-03T15:00:00+00:00,ai
+tw20_user_018,batch publish executed successfully across channels,2024-01-04T12:00:00+00:00,ai
+tw20_user_018,automated content stream calibration in progress,2024-01-03T17:00:00+00:00,ai
+tw20_user_019,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-03T09:00:00+00:00,fake
+tw20_user_019,batch publish executed successfully across channels,2024-01-03T13:00:00+00:00,fake
+tw20_user_019,automated content stream calibration in progress,2024-01-03T17:00:00+00:00,fake
+tw20_user_019,"repeating pattern detected, adjusting generation weights check this now http://example.com @someone !!!",2024-01-03T18:00:00+00:00,fake
+tw20_user_019,system update: optimize pipeline throughput and consistency,2024-01-03T21:00:00+00:00,fake
+tw20_user_019,automated content stream calibration in progress,2024-01-03T14:00:00+00:00,fake
+tw20_user_019,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-03T15:00:00+00:00,fake
+tw20_user_019,automated content stream calibration in progress,2024-01-04T13:00:00+00:00,fake
+tw20_user_019,batch publish executed successfully across channels,2024-01-03T17:00:00+00:00,fake
+tw20_user_019,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-04T21:00:00+00:00,fake
+tw20_user_019,system update: optimize pipeline throughput and consistency,2024-01-04T15:00:00+00:00,fake
+tw20_user_019,"repeating pattern detected, adjusting generation weights",2024-01-03T20:00:00+00:00,fake
+tw20_user_020,Trying a new approach to clean noisy text data,2024-01-03T12:00:00+00:00,human
+tw20_user_020,Posting a quick update before I log off,2024-01-03T15:00:00+00:00,human
+tw20_user_020,Meeting recap: aligning timeline and deliverables with team,2024-01-03T20:00:00+00:00,human
+tw20_user_020,Trying a new approach to clean noisy text data,2024-01-04T00:00:00+00:00,human
+tw20_user_020,Had coffee and reviewed project notes for today,2024-01-03T20:00:00+00:00,human
+tw20_user_020,Meeting recap: aligning timeline and deliverables with team,2024-01-04T03:00:00+00:00,human
+tw20_user_020,Trying a new approach to clean noisy text data,2024-01-04T12:00:00+00:00,human
+tw20_user_020,Had coffee and reviewed project notes for today,2024-01-04T02:00:00+00:00,human
+tw20_user_020,Trying a new approach to clean noisy text data,2024-01-04T12:00:00+00:00,human
+tw20_user_020,Meeting recap: aligning timeline and deliverables with team,2024-01-04T06:00:00+00:00,human
+tw20_user_020,Posting a quick update before I log off,2024-01-05T04:00:00+00:00,human
+tw20_user_020,Had coffee and reviewed project notes for today,2024-01-04T21:00:00+00:00,human
+tw20_user_021,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-03T15:00:00+00:00,deceptive_human
+tw20_user_021,Meeting recap: aligning timeline and deliverables with team,2024-01-03T17:00:00+00:00,deceptive_human
+tw20_user_021,Trying a new approach to clean noisy text data,2024-01-03T23:00:00+00:00,deceptive_human
+tw20_user_021,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-03T21:00:00+00:00,deceptive_human
+tw20_user_021,Posting a quick update before I log off,2024-01-04T03:00:00+00:00,deceptive_human
+tw20_user_021,Posting a quick update before I log off,2024-01-04T01:00:00+00:00,deceptive_human
+tw20_user_021,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-04T09:00:00+00:00,deceptive_human
+tw20_user_021,Had coffee and reviewed project notes for today,2024-01-04T12:00:00+00:00,deceptive_human
+tw20_user_021,Trying a new approach to clean noisy text data,2024-01-04T15:00:00+00:00,deceptive_human
+tw20_user_021,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-04T09:00:00+00:00,deceptive_human
+tw20_user_021,Posting a quick update before I log off,2024-01-04T01:00:00+00:00,deceptive_human
+tw20_user_021,Meeting recap: aligning timeline and deliverables with team,2024-01-05T00:00:00+00:00,deceptive_human
+tw20_user_022,"repeating pattern detected, adjusting generation weights",2024-01-03T18:00:00+00:00,ai
+tw20_user_022,"repeating pattern detected, adjusting generation weights",2024-01-03T19:00:00+00:00,ai
+tw20_user_022,automated content stream calibration in progress,2024-01-04T00:00:00+00:00,ai
+tw20_user_022,automated content stream calibration in progress,2024-01-04T00:00:00+00:00,ai
+tw20_user_022,automated content stream calibration in progress,2024-01-04T10:00:00+00:00,ai
+tw20_user_022,"repeating pattern detected, adjusting generation weights",2024-01-04T14:00:00+00:00,ai
+tw20_user_022,batch publish executed successfully across channels,2024-01-04T18:00:00+00:00,ai
+tw20_user_022,automated content stream calibration in progress,2024-01-04T08:00:00+00:00,ai
+tw20_user_022,batch publish executed successfully across channels,2024-01-04T02:00:00+00:00,ai
+tw20_user_022,system update: optimize pipeline throughput and consistency,2024-01-04T21:00:00+00:00,ai
+tw20_user_022,system update: optimize pipeline throughput and consistency,2024-01-04T04:00:00+00:00,ai
+tw20_user_022,automated content stream calibration in progress,2024-01-04T16:00:00+00:00,ai
+tw20_user_023,"repeating pattern detected, adjusting generation weights check this now http://example.com @someone !!!",2024-01-03T21:00:00+00:00,fake
+tw20_user_023,system update: optimize pipeline throughput and consistency,2024-01-04T01:00:00+00:00,fake
+tw20_user_023,batch publish executed successfully across channels,2024-01-04T01:00:00+00:00,fake
+tw20_user_023,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-04T00:00:00+00:00,fake
+tw20_user_023,batch publish executed successfully across channels,2024-01-04T01:00:00+00:00,fake
+tw20_user_023,batch publish executed successfully across channels,2024-01-04T07:00:00+00:00,fake
+tw20_user_023,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-04T21:00:00+00:00,fake
+tw20_user_023,"repeating pattern detected, adjusting generation weights",2024-01-05T01:00:00+00:00,fake
+tw20_user_023,batch publish executed successfully across channels,2024-01-04T05:00:00+00:00,fake
+tw20_user_023,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-05T00:00:00+00:00,fake
+tw20_user_023,system update: optimize pipeline throughput and consistency,2024-01-04T17:00:00+00:00,fake
+tw20_user_023,batch publish executed successfully across channels,2024-01-04T08:00:00+00:00,fake
+tw20_user_024,Had coffee and reviewed project notes for today,2024-01-04T00:00:00+00:00,human
+tw20_user_024,Had coffee and reviewed project notes for today,2024-01-04T01:00:00+00:00,human
+tw20_user_024,Had coffee and reviewed project notes for today,2024-01-04T08:00:00+00:00,human
+tw20_user_024,Posting a quick update before I log off,2024-01-04T09:00:00+00:00,human
+tw20_user_024,Meeting recap: aligning timeline and deliverables with team,2024-01-04T08:00:00+00:00,human
+tw20_user_024,Trying a new approach to clean noisy text data,2024-01-04T20:00:00+00:00,human
+tw20_user_024,Posting a quick update before I log off,2024-01-05T00:00:00+00:00,human
+tw20_user_024,Posting a quick update before I log off,2024-01-05T04:00:00+00:00,human
+tw20_user_024,Meeting recap: aligning timeline and deliverables with team,2024-01-04T08:00:00+00:00,human
+tw20_user_024,Had coffee and reviewed project notes for today,2024-01-05T03:00:00+00:00,human
+tw20_user_024,Posting a quick update before I log off,2024-01-04T20:00:00+00:00,human
+tw20_user_024,Meeting recap: aligning timeline and deliverables with team,2024-01-04T22:00:00+00:00,human
+tw20_user_025,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-04T03:00:00+00:00,deceptive_human
+tw20_user_025,Posting a quick update before I log off,2024-01-04T06:00:00+00:00,deceptive_human
+tw20_user_025,Posting a quick update before I log off,2024-01-04T11:00:00+00:00,deceptive_human
+tw20_user_025,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-04T09:00:00+00:00,deceptive_human
+tw20_user_025,Trying a new approach to clean noisy text data,2024-01-04T19:00:00+00:00,deceptive_human
+tw20_user_025,Trying a new approach to clean noisy text data,2024-01-04T13:00:00+00:00,deceptive_human
+tw20_user_025,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-04T15:00:00+00:00,deceptive_human
+tw20_user_025,Posting a quick update before I log off,2024-01-04T10:00:00+00:00,deceptive_human
+tw20_user_025,Meeting recap: aligning timeline and deliverables with team,2024-01-04T11:00:00+00:00,deceptive_human
+tw20_user_025,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-04T21:00:00+00:00,deceptive_human
+tw20_user_025,Had coffee and reviewed project notes for today,2024-01-04T13:00:00+00:00,deceptive_human
+tw20_user_025,Had coffee and reviewed project notes for today,2024-01-05T23:00:00+00:00,deceptive_human
+tw20_user_026,system update: optimize pipeline throughput and consistency,2024-01-04T06:00:00+00:00,ai
+tw20_user_026,batch publish executed successfully across channels,2024-01-04T10:00:00+00:00,ai
+tw20_user_026,automated content stream calibration in progress,2024-01-04T10:00:00+00:00,ai
+tw20_user_026,automated content stream calibration in progress,2024-01-04T09:00:00+00:00,ai
+tw20_user_026,automated content stream calibration in progress,2024-01-04T18:00:00+00:00,ai
+tw20_user_026,"repeating pattern detected, adjusting generation weights",2024-01-04T21:00:00+00:00,ai
+tw20_user_026,"repeating pattern detected, adjusting generation weights",2024-01-04T18:00:00+00:00,ai
+tw20_user_026,automated content stream calibration in progress,2024-01-04T20:00:00+00:00,ai
+tw20_user_026,"repeating pattern detected, adjusting generation weights",2024-01-05T14:00:00+00:00,ai
+tw20_user_026,system update: optimize pipeline throughput and consistency,2024-01-05T09:00:00+00:00,ai
+tw20_user_026,batch publish executed successfully across channels,2024-01-05T02:00:00+00:00,ai
+tw20_user_026,system update: optimize pipeline throughput and consistency,2024-01-06T02:00:00+00:00,ai
+tw20_user_027,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-04T09:00:00+00:00,fake
+tw20_user_027,batch publish executed successfully across channels,2024-01-04T12:00:00+00:00,fake
+tw20_user_027,automated content stream calibration in progress,2024-01-04T17:00:00+00:00,fake
+tw20_user_027,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-04T18:00:00+00:00,fake
+tw20_user_027,batch publish executed successfully across channels,2024-01-04T17:00:00+00:00,fake
+tw20_user_027,automated content stream calibration in progress,2024-01-04T19:00:00+00:00,fake
+tw20_user_027,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-05T03:00:00+00:00,fake
+tw20_user_027,system update: optimize pipeline throughput and consistency,2024-01-05T13:00:00+00:00,fake
+tw20_user_027,batch publish executed successfully across channels,2024-01-05T17:00:00+00:00,fake
+tw20_user_027,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-05T03:00:00+00:00,fake
+tw20_user_027,"repeating pattern detected, adjusting generation weights",2024-01-05T05:00:00+00:00,fake
+tw20_user_027,"repeating pattern detected, adjusting generation weights",2024-01-05T07:00:00+00:00,fake
+tw20_user_028,Posting a quick update before I log off,2024-01-04T12:00:00+00:00,human
+tw20_user_028,Had coffee and reviewed project notes for today,2024-01-04T15:00:00+00:00,human
+tw20_user_028,Had coffee and reviewed project notes for today,2024-01-04T16:00:00+00:00,human
+tw20_user_028,Posting a quick update before I log off,2024-01-04T21:00:00+00:00,human
+tw20_user_028,Had coffee and reviewed project notes for today,2024-01-04T16:00:00+00:00,human
+tw20_user_028,Meeting recap: aligning timeline and deliverables with team,2024-01-04T22:00:00+00:00,human
+tw20_user_028,Meeting recap: aligning timeline and deliverables with team,2024-01-05T12:00:00+00:00,human
+tw20_user_028,Trying a new approach to clean noisy text data,2024-01-05T09:00:00+00:00,human
+tw20_user_028,Meeting recap: aligning timeline and deliverables with team,2024-01-04T20:00:00+00:00,human
+tw20_user_028,Had coffee and reviewed project notes for today,2024-01-05T06:00:00+00:00,human
+tw20_user_028,Meeting recap: aligning timeline and deliverables with team,2024-01-06T04:00:00+00:00,human
+tw20_user_028,Posting a quick update before I log off,2024-01-05T10:00:00+00:00,human
+tw20_user_029,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-04T15:00:00+00:00,deceptive_human
+tw20_user_029,Posting a quick update before I log off,2024-01-04T18:00:00+00:00,deceptive_human
+tw20_user_029,Trying a new approach to clean noisy text data,2024-01-04T23:00:00+00:00,deceptive_human
+tw20_user_029,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-05T00:00:00+00:00,deceptive_human
+tw20_user_029,Posting a quick update before I log off,2024-01-05T03:00:00+00:00,deceptive_human
+tw20_user_029,Had coffee and reviewed project notes for today,2024-01-05T11:00:00+00:00,deceptive_human
+tw20_user_029,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-05T15:00:00+00:00,deceptive_human
+tw20_user_029,Trying a new approach to clean noisy text data,2024-01-05T05:00:00+00:00,deceptive_human
+tw20_user_029,Posting a quick update before I log off,2024-01-05T15:00:00+00:00,deceptive_human
+tw20_user_029,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-05T00:00:00+00:00,deceptive_human
+tw20_user_029,Had coffee and reviewed project notes for today,2024-01-05T11:00:00+00:00,deceptive_human
+tw20_user_029,Posting a quick update before I log off,2024-01-06T00:00:00+00:00,deceptive_human
+tw20_user_030,automated content stream calibration in progress,2024-01-04T18:00:00+00:00,ai
+tw20_user_030,"repeating pattern detected, adjusting generation weights",2024-01-04T20:00:00+00:00,ai
+tw20_user_030,batch publish executed successfully across channels,2024-01-04T22:00:00+00:00,ai
+tw20_user_030,batch publish executed successfully across channels,2024-01-05T00:00:00+00:00,ai
+tw20_user_030,"repeating pattern detected, adjusting generation weights",2024-01-05T06:00:00+00:00,ai
+tw20_user_030,batch publish executed successfully across channels,2024-01-05T14:00:00+00:00,ai
+tw20_user_030,automated content stream calibration in progress,2024-01-05T18:00:00+00:00,ai
+tw20_user_030,automated content stream calibration in progress,2024-01-05T15:00:00+00:00,ai
+tw20_user_030,batch publish executed successfully across channels,2024-01-05T10:00:00+00:00,ai
+tw20_user_030,system update: optimize pipeline throughput and consistency,2024-01-05T12:00:00+00:00,ai
+tw20_user_030,system update: optimize pipeline throughput and consistency,2024-01-05T04:00:00+00:00,ai
+tw20_user_030,system update: optimize pipeline throughput and consistency,2024-01-05T05:00:00+00:00,ai
+tw20_user_031,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-04T21:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency,2024-01-04T23:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency,2024-01-05T01:00:00+00:00,fake
+tw20_user_031,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-05T03:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency,2024-01-05T09:00:00+00:00,fake
+tw20_user_031,batch publish executed successfully across channels,2024-01-05T17:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-05T03:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency,2024-01-06T01:00:00+00:00,fake
+tw20_user_031,"repeating pattern detected, adjusting generation weights",2024-01-05T05:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-06T00:00:00+00:00,fake
+tw20_user_031,automated content stream calibration in progress,2024-01-06T13:00:00+00:00,fake
+tw20_user_031,system update: optimize pipeline throughput and consistency,2024-01-05T08:00:00+00:00,fake
+tw20_user_032,Meeting recap: aligning timeline and deliverables with team,2024-01-05T00:00:00+00:00,human
+tw20_user_032,Trying a new approach to clean noisy text data,2024-01-05T02:00:00+00:00,human
+tw20_user_032,Trying a new approach to clean noisy text data,2024-01-05T06:00:00+00:00,human
+tw20_user_032,Had coffee and reviewed project notes for today,2024-01-05T12:00:00+00:00,human
+tw20_user_032,Posting a quick update before I log off,2024-01-05T12:00:00+00:00,human
+tw20_user_032,Meeting recap: aligning timeline and deliverables with team,2024-01-05T20:00:00+00:00,human
+tw20_user_032,Trying a new approach to clean noisy text data,2024-01-05T12:00:00+00:00,human
+tw20_user_032,Had coffee and reviewed project notes for today,2024-01-05T07:00:00+00:00,human
+tw20_user_032,Posting a quick update before I log off,2024-01-05T08:00:00+00:00,human
+tw20_user_032,Posting a quick update before I log off,2024-01-06T12:00:00+00:00,human
+tw20_user_032,Had coffee and reviewed project notes for today,2024-01-06T16:00:00+00:00,human
+tw20_user_032,Meeting recap: aligning timeline and deliverables with team,2024-01-05T11:00:00+00:00,human
+tw20_user_033,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-05T03:00:00+00:00,deceptive_human
+tw20_user_033,Trying a new approach to clean noisy text data,2024-01-05T07:00:00+00:00,deceptive_human
+tw20_user_033,Had coffee and reviewed project notes for today,2024-01-05T05:00:00+00:00,deceptive_human
+tw20_user_033,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-05T09:00:00+00:00,deceptive_human
+tw20_user_033,Trying a new approach to clean noisy text data,2024-01-05T19:00:00+00:00,deceptive_human
+tw20_user_033,Had coffee and reviewed project notes for today,2024-01-05T08:00:00+00:00,deceptive_human
+tw20_user_033,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-05T21:00:00+00:00,deceptive_human
+tw20_user_033,Trying a new approach to clean noisy text data,2024-01-05T17:00:00+00:00,deceptive_human
+tw20_user_033,Meeting recap: aligning timeline and deliverables with team,2024-01-05T11:00:00+00:00,deceptive_human
+tw20_user_033,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-05T21:00:00+00:00,deceptive_human
+tw20_user_033,Trying a new approach to clean noisy text data,2024-01-05T13:00:00+00:00,deceptive_human
+tw20_user_033,Meeting recap: aligning timeline and deliverables with team,2024-01-06T01:00:00+00:00,deceptive_human
+tw20_user_034,"repeating pattern detected, adjusting generation weights",2024-01-05T06:00:00+00:00,ai
+tw20_user_034,automated content stream calibration in progress,2024-01-05T10:00:00+00:00,ai
+tw20_user_034,"repeating pattern detected, adjusting generation weights",2024-01-05T08:00:00+00:00,ai
+tw20_user_034,system update: optimize pipeline throughput and consistency,2024-01-05T09:00:00+00:00,ai
+tw20_user_034,automated content stream calibration in progress,2024-01-05T22:00:00+00:00,ai
+tw20_user_034,"repeating pattern detected, adjusting generation weights",2024-01-05T11:00:00+00:00,ai
+tw20_user_034,"repeating pattern detected, adjusting generation weights",2024-01-06T06:00:00+00:00,ai
+tw20_user_034,"repeating pattern detected, adjusting generation weights",2024-01-05T13:00:00+00:00,ai
+tw20_user_034,batch publish executed successfully across channels,2024-01-06T14:00:00+00:00,ai
+tw20_user_034,"repeating pattern detected, adjusting generation weights",2024-01-06T00:00:00+00:00,ai
+tw20_user_034,batch publish executed successfully across channels,2024-01-06T22:00:00+00:00,ai
+tw20_user_034,batch publish executed successfully across channels,2024-01-06T04:00:00+00:00,ai
+tw20_user_035,"repeating pattern detected, adjusting generation weights check this now http://example.com @someone !!!",2024-01-05T09:00:00+00:00,fake
+tw20_user_035,system update: optimize pipeline throughput and consistency,2024-01-05T11:00:00+00:00,fake
+tw20_user_035,"repeating pattern detected, adjusting generation weights",2024-01-05T11:00:00+00:00,fake
+tw20_user_035,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-05T15:00:00+00:00,fake
+tw20_user_035,batch publish executed successfully across channels,2024-01-05T17:00:00+00:00,fake
+tw20_user_035,"repeating pattern detected, adjusting generation weights",2024-01-06T00:00:00+00:00,fake
+tw20_user_035,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-05T15:00:00+00:00,fake
+tw20_user_035,"repeating pattern detected, adjusting generation weights",2024-01-05T16:00:00+00:00,fake
+tw20_user_035,"repeating pattern detected, adjusting generation weights",2024-01-06T17:00:00+00:00,fake
+tw20_user_035,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-06T12:00:00+00:00,fake
+tw20_user_035,system update: optimize pipeline throughput and consistency,2024-01-06T05:00:00+00:00,fake
+tw20_user_035,batch publish executed successfully across channels,2024-01-06T07:00:00+00:00,fake
+tw20_user_036,Posting a quick update before I log off,2024-01-05T12:00:00+00:00,human
+tw20_user_036,Had coffee and reviewed project notes for today,2024-01-05T13:00:00+00:00,human
+tw20_user_036,Trying a new approach to clean noisy text data,2024-01-05T14:00:00+00:00,human
+tw20_user_036,Trying a new approach to clean noisy text data,2024-01-05T15:00:00+00:00,human
+tw20_user_036,Had coffee and reviewed project notes for today,2024-01-06T04:00:00+00:00,human
+tw20_user_036,Posting a quick update before I log off,2024-01-06T03:00:00+00:00,human
+tw20_user_036,Had coffee and reviewed project notes for today,2024-01-06T12:00:00+00:00,human
+tw20_user_036,Meeting recap: aligning timeline and deliverables with team,2024-01-06T02:00:00+00:00,human
+tw20_user_036,Meeting recap: aligning timeline and deliverables with team,2024-01-06T20:00:00+00:00,human
+tw20_user_036,Trying a new approach to clean noisy text data,2024-01-06T06:00:00+00:00,human
+tw20_user_036,Trying a new approach to clean noisy text data,2024-01-06T18:00:00+00:00,human
+tw20_user_036,Meeting recap: aligning timeline and deliverables with team,2024-01-07T08:00:00+00:00,human
+tw20_user_037,Meeting recap: aligning timeline and deliverables with team check this now http://example.com @someone !!!,2024-01-05T15:00:00+00:00,deceptive_human
+tw20_user_037,Trying a new approach to clean noisy text data,2024-01-05T19:00:00+00:00,deceptive_human
+tw20_user_037,Trying a new approach to clean noisy text data,2024-01-05T23:00:00+00:00,deceptive_human
+tw20_user_037,Had coffee and reviewed project notes for today check this now http://example.com @someone !!!,2024-01-06T03:00:00+00:00,deceptive_human
+tw20_user_037,Trying a new approach to clean noisy text data,2024-01-06T03:00:00+00:00,deceptive_human
+tw20_user_037,Posting a quick update before I log off,2024-01-06T01:00:00+00:00,deceptive_human
+tw20_user_037,Posting a quick update before I log off check this now http://example.com @someone !!!,2024-01-06T03:00:00+00:00,deceptive_human
+tw20_user_037,Meeting recap: aligning timeline and deliverables with team,2024-01-05T22:00:00+00:00,deceptive_human
+tw20_user_037,Had coffee and reviewed project notes for today,2024-01-06T15:00:00+00:00,deceptive_human
+tw20_user_037,Trying a new approach to clean noisy text data check this now http://example.com @someone !!!,2024-01-07T03:00:00+00:00,deceptive_human
+tw20_user_037,Trying a new approach to clean noisy text data,2024-01-07T07:00:00+00:00,deceptive_human
+tw20_user_037,Trying a new approach to clean noisy text data,2024-01-07T11:00:00+00:00,deceptive_human
+tw20_user_038,automated content stream calibration in progress,2024-01-05T18:00:00+00:00,ai
+tw20_user_038,"repeating pattern detected, adjusting generation weights",2024-01-05T21:00:00+00:00,ai
+tw20_user_038,batch publish executed successfully across channels,2024-01-05T22:00:00+00:00,ai
+tw20_user_038,automated content stream calibration in progress,2024-01-06T03:00:00+00:00,ai
+tw20_user_038,"repeating pattern detected, adjusting generation weights",2024-01-06T10:00:00+00:00,ai
+tw20_user_038,batch publish executed successfully across channels,2024-01-06T09:00:00+00:00,ai
+tw20_user_038,"repeating pattern detected, adjusting generation weights",2024-01-06T06:00:00+00:00,ai
+tw20_user_038,"repeating pattern detected, adjusting generation weights",2024-01-06T22:00:00+00:00,ai
+tw20_user_038,"repeating pattern detected, adjusting generation weights",2024-01-07T02:00:00+00:00,ai
+tw20_user_038,automated content stream calibration in progress,2024-01-06T03:00:00+00:00,ai
+tw20_user_038,system update: optimize pipeline throughput and consistency,2024-01-06T14:00:00+00:00,ai
+tw20_user_038,automated content stream calibration in progress,2024-01-07T14:00:00+00:00,ai
+tw20_user_039,"repeating pattern detected, adjusting generation weights check this now http://example.com @someone !!!",2024-01-05T21:00:00+00:00,fake
+tw20_user_039,batch publish executed successfully across channels,2024-01-05T22:00:00+00:00,fake
+tw20_user_039,automated content stream calibration in progress,2024-01-06T05:00:00+00:00,fake
+tw20_user_039,automated content stream calibration in progress check this now http://example.com @someone !!!,2024-01-06T06:00:00+00:00,fake
+tw20_user_039,automated content stream calibration in progress,2024-01-06T09:00:00+00:00,fake
+tw20_user_039,batch publish executed successfully across channels,2024-01-06T17:00:00+00:00,fake
+tw20_user_039,batch publish executed successfully across channels check this now http://example.com @someone !!!,2024-01-06T03:00:00+00:00,fake
+tw20_user_039,batch publish executed successfully across channels,2024-01-07T01:00:00+00:00,fake
+tw20_user_039,system update: optimize pipeline throughput and consistency,2024-01-07T05:00:00+00:00,fake
+tw20_user_039,system update: optimize pipeline throughput and consistency check this now http://example.com @someone !!!,2024-01-07T00:00:00+00:00,fake
+tw20_user_039,automated content stream calibration in progress,2024-01-06T07:00:00+00:00,fake
+tw20_user_039,automated content stream calibration in progress,2024-01-07T06:00:00+00:00,fake

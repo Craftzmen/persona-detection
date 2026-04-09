@@ -98,14 +98,8 @@ def _normalize_ai_mask(predictions: pd.DataFrame, ai_label: str = "AI") -> np.nd
     """Create a boolean mask selecting AI personas from Phase 4 outputs."""
 
     if "classification" in predictions.columns:
-        return (
-            predictions["classification"]
-            .astype(str)
-            .str.strip()
-            .str.lower()
-            .eq(ai_label.lower())
-            .to_numpy()
-        )
+        labels = predictions["classification"].astype(str).str.strip().str.lower()
+        return labels.isin({ai_label.lower(), "fake", "bot", "synthetic", "generated"}).to_numpy()
 
     if "predicted_label" in predictions.columns:
         labels = pd.to_numeric(predictions["predicted_label"], errors="coerce").fillna(0).astype(int)

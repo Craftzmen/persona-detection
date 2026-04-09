@@ -7,7 +7,7 @@ from typing import Any
 
 import requests
 
-from app.config import DEFAULT_TWEET_COUNT, X_API_BASE_URL, X_BEARER_TOKEN
+from app.config import DATA_SOURCE_MODE, DEFAULT_TWEET_COUNT, X_API_BASE_URL, X_BEARER_TOKEN
 from app.utils.logging_utils import setup_logging
 
 logger = setup_logging(__name__)
@@ -61,6 +61,13 @@ def fetch_tweets(username: str, max_tweets: int = DEFAULT_TWEET_COUNT) -> list[d
 
     if not username or not username.strip():
         logger.error("Cannot fetch tweets without a valid username.")
+        return []
+
+    if DATA_SOURCE_MODE != "live":
+        logger.info(
+            "Skipping live tweet fetching because DATA_SOURCE_MODE=%s (requires DATA_SOURCE_MODE=live).",
+            DATA_SOURCE_MODE,
+        )
         return []
 
     if max_tweets <= 0:

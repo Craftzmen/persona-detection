@@ -89,9 +89,9 @@ def _normalize_label(value: Any) -> int:
         return -1
 
     text = str(value).strip().lower()
-    if text in {"0", "human", "real", "organic"}:
+    if text in {"0", "human", "real", "organic", "deceptive_human", "deceptive human"}:
         return 0
-    if text in {"1", "ai", "synthetic", "bot", "generated"}:
+    if text in {"1", "ai", "synthetic", "bot", "generated", "fake", "spam", "cyborg"}:
         return 1
 
     return -1

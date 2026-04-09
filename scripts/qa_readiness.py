@@ -12,12 +12,22 @@ import sys
 import time
 from pathlib import Path
 
+import pandas as pd
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from app.config import LOGS_DIR, OUTPUT_DIR, REPORTS_DIR, SNAPSHOTS_DIR, ensure_directories
+from app.config import DATASET_PATH, LOGS_DIR, OUTPUT_DIR, REPORTS_DIR, SNAPSHOTS_DIR, ensure_directories
 from app.integration_service import analyze_user, format_api_response
+
+
+def _test_username() -> str:
+    if DATASET_PATH.exists():
+        frame = pd.read_csv(DATASET_PATH)
+        if "username" in frame.columns and not frame.empty:
+            return str(frame.iloc[0]["username"])
+    return "NASA"
 
 
 def _run_command(command: list[str], cwd: Path) -> tuple[int, str]:
@@ -44,7 +54,7 @@ def main() -> int:
     checks.append(("pytest", code == 0, output))
 
     try:
-        result = analyze_user("NASA")
+        result = analyze_user(_test_username())
         payload = format_api_response(result)
         response_time = float(result.get("response_time_seconds", 0.0))
         is_valid = (

@@ -1,28 +1,27 @@
-"""Entry point for building the Phase 1 persona dataset."""
+"""CLI entrypoint for dataset-driven persona detection pipeline."""
 
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
 import pandas as pd
 
+from app.attribution_clustering import AttributionClusteringConfig, run_attribution_clustering_pipeline
 from app.config import (
     DATASET_PATH,
-    DEFAULT_AI_POST_COUNT,
-    DEFAULT_TWEET_COUNT,
+    DATA_SOURCE_MODE,
+    PREBUILT_EVAL_SUMMARY_PATH,
     PREPROCESSED_DATASET_PATH,
     PROCESSED_DATA_DIR,
 )
 from app.data_acquisition.dataset_builder import build_dataset
 from app.feature_extraction import FeatureExtractionConfig, build_feature_matrix
-from app.attribution_clustering import (
-    AttributionClusteringConfig,
-    run_attribution_clustering_pipeline,
-)
 from app.persona_detection import (
     TrainingConfig,
+    evaluate_model,
     load_model,
     predict_usernames_from_feature_frame,
     save_model,
@@ -32,28 +31,15 @@ from app.persona_detection import (
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command-line options for dataset generation."""
+    """Parse command-line options for dataset generation and benchmarking."""
 
     parser = argparse.ArgumentParser(
-        description="Build a labeled human/AI persona dataset for a target account."
+        description="Run persona detection pipeline using pre-built datasets."
     )
     parser.add_argument(
-        "username",
-        nargs="?",
-        default="sample_user",
-        help="Target account username to scrape (default: sample_user).",
-    )
-    parser.add_argument(
-        "--max-tweets",
-        type=int,
-        default=DEFAULT_TWEET_COUNT,
-        help=f"Maximum human tweets to scrape (default: {DEFAULT_TWEET_COUNT}).",
-    )
-    parser.add_argument(
-        "--ai-posts",
-        type=int,
-        default=DEFAULT_AI_POST_COUNT,
-        help=f"Number of AI posts to generate (default: {DEFAULT_AI_POST_COUNT}).",
+        "--username",
+        default=None,
+        help="Optional username used only when DATA_SOURCE_MODE=live.",
     )
     parser.add_argument(
         "--tfidf-max-features",
@@ -160,6 +146,48 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _align_to_feature_names(X: pd.DataFrame, feature_names: list[str]) -> pd.DataFrame:
+    aligned = X.copy()
+    for col in feature_names:
+        if col not in aligned.columns:
+            aligned[col] = 0.0
+    return aligned[feature_names]
+
+
+def _build_split_features(preprocessed_df: pd.DataFrame, tfidf_max_features: int) -> tuple[pd.DataFrame, pd.Series]:
+    config = FeatureExtractionConfig(tfidf_max_features=tfidf_max_features)
+    return build_feature_matrix(
+        dataset=preprocessed_df,
+        config=config,
+        save_debug_csv=False,
+        debug_output_dir=PROCESSED_DATA_DIR,
+    )
+
+
+def _dataset_splits(preprocessed: pd.DataFrame) -> dict[str, pd.DataFrame]:
+    if "dataset_name" not in preprocessed.columns:
+        raise ValueError("Preprocessed dataset missing 'dataset_name'.")
+
+    return {
+        "twibot_22": preprocessed[preprocessed["dataset_name"] == "twibot_22"].copy(),
+        "twibot_20": preprocessed[preprocessed["dataset_name"] == "twibot_20"].copy(),
+        "cresci": preprocessed[preprocessed["dataset_name"] == "cresci"].copy(),
+        "pan_2019": preprocessed[preprocessed["dataset_name"] == "pan_2019"].copy(),
+    }
+
+
+def _serialize_metrics(metrics: dict[str, object]) -> dict[str, object]:
+    result: dict[str, object] = {}
+    for key, value in metrics.items():
+        if key == "confusion_matrix":
+            result[key] = value.tolist() if hasattr(value, "tolist") else value
+        elif key in {"y_pred", "y_prob"}:
+            continue
+        elif isinstance(value, (float, int, str, dict)) or value is None:
+            result[key] = value
+    return result
+
+
 def run_prediction_mode(args: argparse.Namespace) -> int:
     """Predict persona labels from a feature CSV using a saved model."""
 
@@ -229,19 +257,144 @@ def run_prediction_mode(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_dataset_benchmark(args: argparse.Namespace, preprocessed_df: pd.DataFrame) -> int:
+    """Train on TwiBot-22 and evaluate on TwiBot-20/Cresci/PAN datasets."""
+
+    splits = _dataset_splits(preprocessed_df)
+    train_df = splits["twibot_22"]
+
+    if train_df.empty:
+        print("No TwiBot-22 rows available in preprocessed dataset; cannot train.")
+        return 1
+
+    X_train, y_train = _build_split_features(train_df, args.tfidf_max_features)
+    if X_train.empty:
+        print("TwiBot-22 produced an empty feature matrix; cannot train.")
+        return 1
+
+    try:
+        training_config = TrainingConfig(
+            cv_folds=args.cv_folds,
+            use_grid_search=args.grid_search,
+            top_n_features=args.top_features,
+        )
+        training_result = train_model(
+            X=X_train,
+            y=y_train,
+            config=training_config,
+            plot_confusion=args.plot_metrics,
+            output_dir=PROCESSED_DATA_DIR,
+            interactive=args.interactive_viz,
+        )
+    except Exception as exc:  # pragma: no cover - top-level execution path
+        print(f"Failed during Phase 4 training: {exc}")
+        return 1
+
+    best_name = training_result["best_model_name"]
+    best_model = training_result["best_model"]
+    feature_names = training_result["feature_names"]
+
+    print("\nPhase 4 tuning results on TwiBot-22 holdout:")
+    for model_name, metrics in training_result["metrics"].items():
+        print(
+            f"- {model_name}: "
+            f"acc={metrics['accuracy']:.4f}, "
+            f"precision={metrics['precision']:.4f}, "
+            f"recall={metrics['recall']:.4f}, "
+            f"f1={metrics['f1']:.4f}, "
+            f"cv_f1={metrics['cv_f1_mean']:.4f}+/-{metrics['cv_f1_std']:.4f}"
+        )
+
+    model_path = save_model(
+        model=best_model,
+        file_path=args.model_output,
+        feature_names=feature_names,
+        model_name=best_name,
+    )
+    print(f"Saved best model to: {model_path}")
+
+    rf_importance = training_result["feature_importance"].get("RandomForest", pd.DataFrame())
+    xgb_importance = training_result["feature_importance"].get("XGBoost", pd.DataFrame())
+
+    if not rf_importance.empty and args.plot_metrics:
+        visualize_feature_importance(
+            rf_importance,
+            model_name="RandomForest",
+            output_dir=PROCESSED_DATA_DIR,
+            interactive=args.interactive_viz,
+        )
+
+    if not xgb_importance.empty and args.plot_metrics:
+        visualize_feature_importance(
+            xgb_importance,
+            model_name="XGBoost",
+            output_dir=PROCESSED_DATA_DIR,
+            interactive=args.interactive_viz,
+        )
+
+    external_scores: dict[str, dict[str, object]] = {}
+    for eval_name in ("twibot_20", "cresci", "pan_2019"):
+        frame = splits[eval_name]
+        if frame.empty:
+            print(f"Skipping {eval_name}: no rows available.")
+            external_scores[eval_name] = {"status": "skipped", "reason": "empty dataset"}
+            continue
+
+        X_eval, y_eval = _build_split_features(frame, args.tfidf_max_features)
+        if X_eval.empty:
+            print(f"Skipping {eval_name}: feature matrix empty after preprocessing.")
+            external_scores[eval_name] = {"status": "skipped", "reason": "empty features"}
+            continue
+
+        X_eval = _align_to_feature_names(X_eval, feature_names)
+        metrics = evaluate_model(
+            model=best_model,
+            X_test=X_eval,
+            y_test=y_eval.to_numpy(dtype=int),
+            model_name=f"{best_name}_{eval_name}",
+            plot_confusion=args.plot_metrics,
+            output_dir=PROCESSED_DATA_DIR,
+            interactive=args.interactive_viz,
+        )
+        external_scores[eval_name] = _serialize_metrics(metrics)
+
+        print(
+            f"External evaluation on {eval_name}: "
+            f"acc={metrics['accuracy']:.4f}, "
+            f"precision={metrics['precision']:.4f}, "
+            f"recall={metrics['recall']:.4f}, "
+            f"f1={metrics['f1']:.4f}"
+        )
+
+    summary = {
+        "data_source_mode": DATA_SOURCE_MODE,
+        "train_dataset": "twibot_22",
+        "validation_dataset": "twibot_20",
+        "stress_test_datasets": ["cresci", "pan_2019"],
+        "best_model_name": best_name,
+        "twibot22_tuning": {
+            model_name: _serialize_metrics(metrics)
+            for model_name, metrics in training_result["metrics"].items()
+        },
+        "external_evaluation": external_scores,
+    }
+
+    PREBUILT_EVAL_SUMMARY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PREBUILT_EVAL_SUMMARY_PATH.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    print(f"Saved evaluation summary to: {PREBUILT_EVAL_SUMMARY_PATH}")
+
+    return 0
+
+
 def main() -> int:
-    """Run Phase 1-4 pipeline and print output summaries."""
+    """Run dataset build + feature extraction + optional training/evaluation."""
 
     args = parse_args()
     if args.predict_features_csv is not None:
         return run_prediction_mode(args)
 
     try:
-        dataset = build_dataset(
-            username=args.username,
-            max_human_tweets=args.max_tweets,
-            num_ai_posts=args.ai_posts,
-        )
+        dataset = build_dataset(username=args.username)
     except Exception as exc:  # pragma: no cover - top-level execution path
         print(f"Failed to build dataset: {exc}")
         return 1
@@ -270,74 +423,12 @@ def main() -> int:
     if not X.empty:
         print("Sample feature columns:")
         print(X.columns[:20].tolist())
+
     if not args.no_feature_export:
         print(f"Phase 3 CSV outputs saved under: {PROCESSED_DATA_DIR}")
 
     if args.train_phase4:
-        try:
-            training_config = TrainingConfig(
-                cv_folds=args.cv_folds,
-                use_grid_search=args.grid_search,
-                top_n_features=args.top_features,
-            )
-            training_result = train_model(
-                X=X,
-                y=y,
-                config=training_config,
-                plot_confusion=args.plot_metrics,
-                output_dir=PROCESSED_DATA_DIR,
-                interactive=args.interactive_viz,
-            )
-        except Exception as exc:  # pragma: no cover - top-level execution path
-            print(f"Failed during Phase 4 training: {exc}")
-            return 1
-
-        best_name = training_result["best_model_name"]
-        best_metrics = training_result["metrics"][best_name]
-        print("\nPhase 4 model comparison:")
-        for model_name, metrics in training_result["metrics"].items():
-            print(
-                f"- {model_name}: "
-                f"acc={metrics['accuracy']:.4f}, "
-                f"precision={metrics['precision']:.4f}, "
-                f"recall={metrics['recall']:.4f}, "
-                f"f1={metrics['f1']:.4f}, "
-                f"cv_f1={metrics['cv_f1_mean']:.4f}±{metrics['cv_f1_std']:.4f}"
-            )
-
-        print(f"\nBest model: {best_name} (F1={best_metrics['f1']:.4f})")
-        model_path = save_model(
-            model=training_result["best_model"],
-            file_path=args.model_output,
-            feature_names=training_result["feature_names"],
-            model_name=best_name,
-        )
-        print(f"Saved best model to: {model_path}")
-
-        rf_importance = training_result["feature_importance"].get("RandomForest", pd.DataFrame())
-        xgb_importance = training_result["feature_importance"].get("XGBoost", pd.DataFrame())
-
-        if not rf_importance.empty:
-            print(f"\nTop {args.top_features} RandomForest features:")
-            print(rf_importance.head(args.top_features))
-            if args.plot_metrics:
-                visualize_feature_importance(
-                    rf_importance,
-                    model_name="RandomForest",
-                    output_dir=PROCESSED_DATA_DIR,
-                    interactive=args.interactive_viz,
-                )
-
-        if not xgb_importance.empty:
-            print(f"\nTop {args.top_features} XGBoost features:")
-            print(xgb_importance.head(args.top_features))
-            if args.plot_metrics:
-                visualize_feature_importance(
-                    xgb_importance,
-                    model_name="XGBoost",
-                    output_dir=PROCESSED_DATA_DIR,
-                    interactive=args.interactive_viz,
-                )
+        return run_dataset_benchmark(args, preprocessed_df)
 
     return 0
 

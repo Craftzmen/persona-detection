@@ -56,7 +56,7 @@ persona-detection/
 ## 📂 The 5-Phase Pipeline
 
 ### Phase 1: Data Acquisition
-Collecting ground-truth data. This involves scraping real tweets via the X API and generating synthetic datasets using LLM patterns to create a balanced, labeled corpus.
+Collecting ground-truth data from pre-built benchmark datasets (TwiBot-22, TwiBot-20, Cresci, PAN 2019). Data is normalized into a common schema for reproducible training, validation, and stress testing.
 
 ### Phase 2: Preprocessing
 Cleaning, normalizing, and tokenizing raw text data. This phase ensures data consistency across both human and synthetic sources.
@@ -79,7 +79,7 @@ Grouping personas into "clusters" using DBSCAN and NetworkX. This phase identifi
 
 ### 1. Prerequisites
 - Python 3.10.x
-- X API Bearer Token (for data acquisition)
+- Pre-built dataset files for TwiBot-22, TwiBot-20, Cresci, and PAN 2019
 
 ### 2. Installation
 ```bash
@@ -96,7 +96,18 @@ Create a `.env` file from the template:
 ```bash
 cp .env.example .env
 ```
-Fill in your `X_BEARER_TOKEN` and optional authentication credentials.
+Configure dataset source paths in `.env` if they differ from defaults:
+
+```bash
+TWIBOT22_SOURCE=data/raw/twibot_22.csv
+TWIBOT20_SOURCE=data/raw/twibot_20.csv
+CRESCI_SOURCE=data/raw/cresci_2017.csv
+PAN2019_SOURCE=data/raw/pan_2019.csv
+DATA_SOURCE_MODE=dataset
+```
+
+Optional future mode:
+- Set `DATA_SOURCE_MODE=live` to re-enable live scraping workflows.
 
 ---
 
@@ -109,7 +120,7 @@ make run-dashboard
 ```
 
 **Features included:**
-- **Search & Analyze**: Enter any X username to perform an end-to-end investigation.
+- **Search & Analyze**: Enter any username present in the loaded dataset to perform an end-to-end investigation.
 - **Risk Scoring**: Visual indicators for `Low`, `Medium`, and `High` synthetic risk.
 - **Interactive Graphs**: Explore the attribution network and linked personas.
 - **History & Comparison**: Compare two personas side-by-side to find behavioral overrides.

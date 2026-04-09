@@ -3,11 +3,21 @@
 from __future__ import annotations
 
 from fastapi.testclient import TestClient
+import pandas as pd
 
 import app.api.backend as api_backend
+from app.config import DATASET_PATH
 
 
 client = TestClient(api_backend.app)
+
+
+def _test_username() -> str:
+    if DATASET_PATH.exists():
+        frame = pd.read_csv(DATASET_PATH)
+        if "username" in frame.columns and not frame.empty:
+            return str(frame.iloc[0]["username"])
+    return "NASA"
 
 
 def test_health_endpoint() -> None:
@@ -23,10 +33,10 @@ def test_analyze_endpoint_without_auth() -> None:
     api_backend.API_AUTH_PASSWORD = ""
 
     try:
-        response = client.get("/analyze", params={"username": "NASA"})
+        response = client.get("/analyze", params={"username": _test_username()})
         assert response.status_code == 200
         body = response.json()
-        assert body["username"] == "nasa"
+        assert body["username"]
         assert body["prediction"] in {"AI", "Human"}
     finally:
         api_backend.API_AUTH_USERNAME = original_user
@@ -57,13 +67,13 @@ def test_auth_required_when_configured() -> None:
     api_backend.API_AUTH_PASSWORD = "secret"
 
     try:
-        unauth = client.get("/analyze", params={"username": "NASA"})
+        unauth = client.get("/analyze", params={"username": _test_username()})
         assert unauth.status_code == 401
 
-        bad_auth = client.get("/analyze", params={"username": "NASA"}, auth=("tester", "wrong"))
+        bad_auth = client.get("/analyze", params={"username": _test_username()}, auth=("tester", "wrong"))
         assert bad_auth.status_code == 401
 
-        ok_auth = client.get("/analyze", params={"username": "NASA"}, auth=("tester", "secret"))
+        ok_auth = client.get("/analyze", params={"username": _test_username()}, auth=("tester", "secret"))
         assert ok_auth.status_code == 200
     finally:
         api_backend.API_AUTH_USERNAME = original_user

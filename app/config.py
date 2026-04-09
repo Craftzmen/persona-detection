@@ -21,14 +21,23 @@ SNAPSHOTS_DIR = OUTPUT_DIR / "snapshots"
 LOGS_DIR = OUTPUT_DIR / "logs"
 DATASET_PATH = PROCESSED_DATA_DIR / "dataset.csv"
 PREPROCESSED_DATASET_PATH = PROCESSED_DATA_DIR / "dataset_preprocessed.csv"
+PREBUILT_DATASET_MERGED_PATH = PROCESSED_DATA_DIR / "prebuilt_merged_dataset.csv"
+PREBUILT_EVAL_SUMMARY_PATH = PROCESSED_DATA_DIR / "prebuilt_evaluation_summary.json"
 
 DEFAULT_TWEET_COUNT = 50
 DEFAULT_AI_POST_COUNT = 50
 DEFAULT_RANDOM_SEED = 42
+DATA_SOURCE_MODE = os.getenv("DATA_SOURCE_MODE", "dataset").strip().lower()
+DATA_SOURCE_MODES = {"dataset", "live"}
 LOG_LEVEL = "INFO"
 LOG_FILE_NAME = os.getenv("LOG_FILE_NAME", "app.log")
 LOG_FILE_MAX_BYTES = int(os.getenv("LOG_FILE_MAX_BYTES", str(5 * 1024 * 1024)))
 LOG_FILE_BACKUP_COUNT = int(os.getenv("LOG_FILE_BACKUP_COUNT", "5"))
+
+TWIBOT22_SOURCE = os.getenv("TWIBOT22_SOURCE", str(RAW_DATA_DIR / "twibot_22.csv"))
+TWIBOT20_SOURCE = os.getenv("TWIBOT20_SOURCE", str(RAW_DATA_DIR / "TwiBot-20_sample.json"))
+CRESCI_SOURCE = os.getenv("CRESCI_SOURCE", str(RAW_DATA_DIR / "cresci_2017.csv"))
+PAN2019_SOURCE = os.getenv("PAN2019_SOURCE", str(RAW_DATA_DIR / "pan_2019.csv"))
 
 X_API_BASE_URL = os.getenv("X_API_BASE_URL", "https://api.x.com/2")
 X_BEARER_TOKEN = os.getenv("X_BEARER_TOKEN", "")

@@ -29,9 +29,8 @@ from reportlab.platypus import Image, Paragraph, SimpleDocTemplate, Spacer, Tabl
 from sklearn.metrics.pairwise import cosine_similarity
 
 from app.attribution_clustering import AttributionClusteringConfig, run_attribution_clustering_pipeline
-from app.config import DATASET_PATH, PROCESSED_DATA_DIR
+from app.config import DATASET_PATH, DATA_SOURCE_MODE, PROCESSED_DATA_DIR
 from app.data_acquisition.preprocessing import preprocess_pipeline
-from app.data_acquisition.twitter_scraper import fetch_tweets
 from app.feature_extraction import FeatureExtractionConfig, FeatureExtractor
 from app.persona_detection import load_model, predict_usernames_from_feature_frame
 from app.utils.logging_utils import setup_logging
@@ -80,21 +79,27 @@ def _load_raw_dataset_cached() -> pd.DataFrame:
     """Load local dataset once per process for low-latency lookups."""
 
     if not DATASET_PATH.exists():
-        return pd.DataFrame(columns=["username", "text", "timestamp", "label"])
+        return pd.DataFrame(columns=["username", "tweet_text", "timestamp", "label"])
 
     try:
         frame = pd.read_csv(DATASET_PATH)
     except Exception as exc:
         logger.warning("Failed reading local dataset: %s", exc)
-        return pd.DataFrame(columns=["username", "text", "timestamp", "label"])
+        return pd.DataFrame(columns=["username", "tweet_text", "timestamp", "label"])
 
-    for required in ["username", "text", "timestamp"]:
+    rename_map = {}
+    if "text" in frame.columns and "tweet_text" not in frame.columns:
+        rename_map["text"] = "tweet_text"
+    if rename_map:
+        frame = frame.rename(columns=rename_map)
+
+    for required in ["username", "tweet_text", "timestamp"]:
         if required not in frame.columns:
             logger.warning("Dataset missing required column: %s", required)
-            return pd.DataFrame(columns=["username", "text", "timestamp", "label"])
+            return pd.DataFrame(columns=["username", "tweet_text", "timestamp", "label"])
 
     frame["username"] = frame["username"].astype(str).map(_canonical_username)
-    frame["text"] = frame["text"].fillna("").astype(str)
+    frame["tweet_text"] = frame["tweet_text"].fillna("").astype(str)
     frame["timestamp"] = pd.to_datetime(frame["timestamp"], utc=True, errors="coerce")
     return frame.dropna(subset=["timestamp"]).reset_index(drop=True)
 
@@ -115,26 +120,21 @@ def _load_model_bundle_cached() -> dict[str, Any] | None:
 
 
 def _extract_user_posts(username: str, max_posts_from_api: int) -> pd.DataFrame:
-    """Fetch account posts from local dataset first, then X API scraper."""
+    """Fetch account posts from local dataset (default) or optional live source."""
 
     canonical = _canonical_username(username)
     dataset = _load_raw_dataset_cached()
     from_dataset = dataset[dataset["username"] == canonical].copy()
 
     if not from_dataset.empty:
-        return from_dataset.rename(columns={"text": "post_text"})[["username", "post_text", "timestamp"]]
+        return from_dataset.rename(columns={"tweet_text": "post_text"})[["username", "post_text", "timestamp"]]
 
-    scraped = fetch_tweets(username=canonical, max_tweets=max_posts_from_api)
-    if not scraped:
-        return pd.DataFrame(columns=["username", "post_text", "timestamp"])
-
-    frame = pd.DataFrame(scraped)
-    if frame.empty:
-        return pd.DataFrame(columns=["username", "post_text", "timestamp"])
-
-    frame = frame.rename(columns={"text": "post_text"})
-    frame["username"] = frame["username"].astype(str).map(_canonical_username)
-    return frame[["username", "post_text", "timestamp"]]
+    logger.info(
+        "No local posts found for '%s' while DATA_SOURCE_MODE=%s; returning empty set.",
+        canonical,
+        DATA_SOURCE_MODE,
+    )
+    return pd.DataFrame(columns=["username", "post_text", "timestamp"])
 
 
 def _heuristic_probability(feature_row: pd.Series) -> float:
@@ -185,7 +185,7 @@ def _build_reference_feature_set(current_preprocessed: pd.DataFrame) -> tuple[pd
     if dataset.empty:
         return _merge_feature_frames(current_preprocessed)
 
-    historical_input = dataset.rename(columns={"text": "post_text"})[["username", "post_text", "timestamp"]]
+    historical_input = dataset.rename(columns={"tweet_text": "post_text"})[["username", "post_text", "timestamp"]]
     historical_preprocessed = preprocess_pipeline(historical_input)
 
     if historical_preprocessed.empty:
@@ -256,7 +256,8 @@ def _linked_personas_from_similarity(
     if feature_frame.empty or len(feature_frame) < 2:
         return []
 
-    matrix = feature_frame.drop(columns=["username"]).to_numpy(dtype=float, copy=False)
+    numeric_frame = feature_frame.drop(columns=["username", "label"], errors="ignore").select_dtypes(include=[np.number, float, int])
+    matrix = numeric_frame.to_numpy(dtype=float, copy=False)
     similarity = cosine_similarity(matrix)
 
     usernames = feature_frame["username"].astype(str).tolist()
@@ -275,6 +276,132 @@ def _linked_personas_from_similarity(
     ]
     ranked.sort(key=lambda item: item[1], reverse=True)
     return [name for name, _ in ranked[:limit]]
+
+
+def _build_persona_network_graph(
+    username: str,
+    feature_frame: pd.DataFrame,
+    predictions: pd.DataFrame,
+    linked_personas: list[str],
+    min_similarity: float = 0.45,
+    max_neighbors: int = 12,
+) -> dict[str, list[dict[str, Any]]]:
+    """Create a persona-centric similarity graph for dashboard and API views."""
+
+    if feature_frame.empty or "username" not in feature_frame.columns:
+        return {"nodes": [], "links": []}
+
+    numeric_frame = feature_frame.drop(columns=["username", "label"], errors="ignore").select_dtypes(include=[np.number, float, int])
+    if numeric_frame.empty:
+        return {"nodes": [{"id": _canonical_username(username), "role": "target"}], "links": []}
+
+    matrix = cosine_similarity(numeric_frame.to_numpy(dtype=float, copy=False))
+
+    usernames = feature_frame["username"].astype(str).map(_canonical_username).tolist()
+    canonical = _canonical_username(username)
+    if canonical not in usernames:
+        return {"nodes": [], "links": []}
+
+    score_map: dict[str, float] = {}
+    if {"username", "synthetic_score"}.issubset(predictions.columns):
+        for user, score in zip(predictions["username"], predictions["synthetic_score"], strict=False):
+            score_map[_canonical_username(str(user))] = float(pd.to_numeric(score, errors="coerce") or 0.0)
+
+    prediction_map: dict[str, str] = {}
+    if "classification" in predictions.columns:
+        prediction_map = {
+            _canonical_username(str(row["username"])): str(row["classification"])
+            for _, row in predictions.iterrows()
+            if "username" in row
+        }
+    elif "predicted_label" in predictions.columns:
+        labels = pd.to_numeric(predictions["predicted_label"], errors="coerce").fillna(0).astype(int)
+        prediction_map = {
+            _canonical_username(str(user)): ("AI" if int(label) == 1 else "Human")
+            for user, label in zip(predictions["username"], labels, strict=False)
+        }
+
+    target_idx = usernames.index(canonical)
+    similarity_scores = matrix[target_idx]
+
+    ranked = sorted(
+        [
+            (idx, float(similarity_scores[idx]))
+            for idx in range(len(usernames))
+            if idx != target_idx
+        ],
+        key=lambda item: item[1],
+        reverse=True,
+    )
+
+    selected_usernames = [canonical]
+    for idx, similarity in ranked:
+        if len(selected_usernames) >= max_neighbors + 1:
+            break
+        if similarity < min_similarity:
+            continue
+        selected_usernames.append(usernames[idx])
+
+    for linked in linked_personas:
+        canonical_linked = _canonical_username(linked)
+        if canonical_linked in usernames and canonical_linked not in selected_usernames:
+            selected_usernames.append(canonical_linked)
+
+    if len(selected_usernames) == 1 and ranked:
+        selected_usernames.extend([usernames[idx] for idx, _ in ranked[: min(3, len(ranked))]])
+
+    selected_indices = [usernames.index(name) for name in selected_usernames]
+
+    linked_canonical_set = {_canonical_username(item) for item in linked_personas}
+
+    nodes: list[dict[str, Any]] = []
+    for name in selected_usernames:
+        if name == canonical:
+            role = "target"
+        elif name in linked_canonical_set:
+            role = "linked"
+        else:
+            role = "peer"
+        nodes.append(
+            {
+                "id": name,
+                "role": role,
+                "synthetic_score": score_map.get(name, 0.0),
+                "prediction": prediction_map.get(name, "Unknown"),
+            }
+        )
+
+    links: list[dict[str, Any]] = []
+    local_scores: list[float] = []
+    for i in range(len(selected_indices)):
+        for j in range(i + 1, len(selected_indices)):
+            sim = float(matrix[selected_indices[i], selected_indices[j]])
+            local_scores.append(sim)
+
+    adaptive_threshold = min_similarity
+    if local_scores:
+        adaptive_threshold = float(np.clip(np.quantile(local_scores, 0.65), 0.35, 0.85))
+
+    for i in range(len(selected_indices)):
+        for j in range(i + 1, len(selected_indices)):
+            sim = float(matrix[selected_indices[i], selected_indices[j]])
+            source = selected_usernames[i]
+            target = selected_usernames[j]
+            if sim >= adaptive_threshold:
+                links.append({"source": source, "target": target, "weight": round(sim, 4)})
+
+    if not links and len(selected_usernames) > 1:
+        # Guarantee a minimally connected ego-view even in low-similarity slices.
+        candidate_edges = [
+            (selected_usernames[i], selected_usernames[j], float(matrix[selected_indices[i], selected_indices[j]]))
+            for i in range(len(selected_indices))
+            for j in range(i + 1, len(selected_indices))
+        ]
+        candidate_edges.sort(key=lambda item: item[2], reverse=True)
+        for source, target, sim in candidate_edges[: min(3, len(candidate_edges))]:
+            links.append({"source": source, "target": target, "weight": round(sim, 4)})
+
+    return {"nodes": nodes, "links": links}
 
 
 def format_api_response(analysis_data: dict[str, Any]) -> dict[str, Any]:
@@ -467,7 +594,12 @@ def analyze_user(username: str, config: AnalysisConfig | None = None) -> dict[st
         "linked_personas": linked_personas,
         "risk_level": generate_risk_score(synthetic_score),
         "timeline": timeline,
-        "network_graph": phase5_result.get("api_response", {}).get("graph", {"nodes": [], "links": []}),
+        "network_graph": _build_persona_network_graph(
+            username=canonical,
+            feature_frame=feature_frame,
+            predictions=predictions,
+            linked_personas=linked_personas,
+        ),
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
 

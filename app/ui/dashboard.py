@@ -901,12 +901,24 @@ def render_dashboard() -> None:
         )
         with st.form("analysis_form", border=False):
             in_col, action_col = st.columns([4, 1])
-            username = in_col.text_input(
-                "Target Username",
-                value="",
-                placeholder="Enter username to investigate (e.g., nasa)",
-                label_visibility="collapsed",
-            )
+            from app.integration_service import _load_raw_dataset_cached
+            df_cache = _load_raw_dataset_cached()
+            known_users = sorted(df_cache["username"].dropna().astype(str).unique().tolist()) if not df_cache.empty else []
+
+            if known_users:
+                username = in_col.selectbox(
+                    "Target Username",
+                    options=known_users,
+                    index=0 if "shaq" not in known_users else known_users.index("shaq"),
+                    label_visibility="collapsed",
+                )
+            else:
+                username = in_col.text_input(
+                    "Target Username",
+                    value="",
+                    placeholder="Enter username to investigate (e.g., nasa)",
+                    label_visibility="collapsed",
+                )
             analyze_clicked = action_col.form_submit_button("Analyze", type="primary", use_container_width=True)
 
     # ── No analysis state ───────────────────────────────────────────────────
